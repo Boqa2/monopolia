@@ -31,7 +31,11 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  background: url("../assets/Generative\ Fill\ 2.png") top/cover no-repeat;
+  transition: background 0.3s ease-out;
+  background: url("../assets/GenerativeFill2.png") top/cover no-repeat;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .notch {
   position: absolute;
@@ -88,6 +92,7 @@ body {
 }
 .text:nth-child(1) {
   font-size: 40px;
+  text-transform: uppercase;
 }
 .text:nth-child(2) {
   font-size: 13px;
@@ -100,16 +105,12 @@ body {
   width: 38%;
   height: 35px;
   font-size: 17px;
-  margin: 15px 0;
   text-transform: uppercase;
   font-family: "Neue Kabel W01 Bold";
   background: rgb(200, 223, 208);
   transition: transform 0.4 ease-in;
   &:focus-visible {
     outline: none;
-  }
-  &:hover {
-    transform: translateY(1px);
   }
 
   &:active {
@@ -156,8 +157,9 @@ body {
   left: 13px;
   z-index: 1;
 }
-.for-spin > img {
-  width: 100%;
+.expension {
+  width: 101%;
+  height: 100%;
 }
 .for-balans {
   display: flex;
@@ -172,14 +174,12 @@ body {
 .board {
   width: 80%;
   height: 83%;
-  border: 1px solid black;
   border-radius: 3px;
   position: relative;
 }
 .top {
   width: 100%;
   height: 14.5%;
-  border-bottom: 1px solid black;
   z-index: 5;
   position: relative;
   display: flex;
@@ -195,7 +195,6 @@ body {
 .bottom {
   width: 100%;
   height: 14.5%;
-  border-top: 1px solid black;
   z-index: 5;
   position: relative;
   display: flex;
@@ -205,23 +204,23 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: 0;
   border-radius: 1px;
 }
 .left {
   width: 14.6%;
-  border-right: 1px solid black;
   display: flex;
   flex-direction: column;
 }
 .forvard {
-  width: 71%;
+  width: 71.5%;
   position: relative;
   z-index: 5;
 }
 .rigth {
-  width: 14.5%;
-  border-left: 1px solid black;
+  width: 14%;
   position: relative;
   z-index: 5;
   height: 100%;
@@ -235,13 +234,16 @@ body {
 .container-rolls {
   width: 100%;
   height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .first {
   width: 14%;
   height: 100%;
 }
-.theerd{
-    width: 14.8%;
+.theerd {
+  width: 14.8%;
   height: 100%;
 }
 .meedle {
@@ -250,14 +252,343 @@ body {
 .second {
   width: 14.6%;
 }
-.fourth{
-    width: 14.5%;
+.fourth {
+  width: 14.5%;
 }
 .center-cels {
   width: 100%;
   height: 12%;
 }
+.car {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 6;
+  width: 12%;
+  height: 8%;
+  transition: all 0.3s ease;
+}
+.spin {
+  position: relative;
+}
+.img-spin {
+  margin-right: 1px;
+  width: 98%;
+  height: 110%;
+  position: absolute;
+  z-index: 6;
+}
+.img-spin-left {
+  width: 56%;
+  height: 200%;
+  transform: rotate(90deg);
+  position: absolute;
+  top: -12.8px;
+  left: 5px;
+  z-index: 6;
+}
 
+.img-spin-rigth {
+  width: 58%;
+  height: 200%;
+  transform: rotate(-90deg);
+  position: absolute;
+  top: -13px;
+  left: 11px;
+  z-index: 6;
+}
+.img-spin-top {
+  width: 98%;
+  height: 112%;
+  transform: rotate(-180deg);
+  position: absolute;
+  top: -5.6px;
+  left: -0.4px;
+  z-index: 6;
+}
+.pointer {
+  width: 15px;
+  position: absolute;
+  height: 40px;
+  left: 24.35%;
+  top: 12.5%;
+}
+
+.bonus {
+  width: 40%;
+  height: 23%;
+  position: absolute;
+  top: 63%;
+  left: 10%;
+}
+
+.cash {
+  position: absolute;
+  top: 11%;
+  left: 56%;
+  width: 56%;
+  height: 27%;
+}
+.cash:nth-last-child(2) {
+  transform: rotate(-1deg);
+}
+.cash:nth-last-child(1) {
+  transform: rotate(-2deg);
+}
+
+.dice-conteiner {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+  gap: 2%;
+}
+.dice1 {
+  width: 20%;
+  height: 80%;
+  transform: rotate(0deg);
+}
+.dice2 {
+  width: 20%;
+  height: 80%;
+  transform: rotate(0deg);
+}
+.btn2 {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.role-button {
+  border: 2px solid black;
+  width: 38%;
+  height: 35px;
+  font-size: 17px;
+  margin: 15px 0;
+  text-transform: uppercase;
+  font-family: "Neue Kabel W01 Bold";
+  background: rgb(200, 223, 208);
+  transition: transform 0.4 ease-in;
+  &:focus-visible {
+    outline: none;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.role-animation {
+  animation: rols 200ms infinite;
+}
+@keyframes rols {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spiner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.spins-content {
+  width: 40%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+}
+.btn-spin {
+  border: 2px solid black;
+  width: 38%;
+  height: 35px;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-family: "Neue Kabel W01 Bold";
+  background: rgb(200, 223, 208);
+  transition: transform 0.4 ease-in;
+  &:focus-visible {
+    outline: none;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.point-spin {
+  width: 25%;
+  height: 100px;
+  position: absolute;
+  top: 15%;
+  transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.opacity-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 3.7%;
+  top: -3px;
+  z-index: 6;
+}
+.opacity-bg > img {
+  width: 96.5%;
+  height: 102%;
+}
+
+.for-jeckpot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+}
+.zindex {
+  z-index: 999999999;
+}
+.img-money {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 1s ease-in;
+}
+
+.animation-up {
+  animation: fall 3s linear infinite, fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+.choose-home {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 7;
+}
+.choose-conte {
+  width: 90%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.664);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.rent-home {
+  width: 100%;
+  height: 80%;
+}
+.elm {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-shade {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 79%;
+  background: rgba(0, 0, 0, 0.626);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.end {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/Generative\ Fill\.png") top/cover no-repeat;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  flex-direction: column;
+  padding-bottom: 35px;
+}
+
+.reset {
+  border: 2px solid black;
+  width: 38%;
+  height: 35px;
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  font-family: "Neue Kabel W01 Bold";
+  background: rgb(200, 223, 208);
+  transition: transform 0.4 ease-in;
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+.reset > img {
+  width: 15%;
+  height: 50%;
+}
+.cont{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 .hidden {
   display: none;
 }

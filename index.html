@@ -3,18 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Monopoly</title>
+    <link rel="icon" href="assets/spin token.png" />
     <link
       href="https://db.onlinewebfonts.com/c/600ab0b5dbeba51a9434c9461db82573?family=Neue+Kabel+W01+Bold"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
   <body>
     <div class="phone">
       <div class="notch"></div>
       <div class="screen">
-        <div class="start hidden">
+        <div class="start">
           <div class="logos-cont">
             <img
               class="logo"
@@ -29,12 +31,71 @@
                 for a chance to win the entire jackpot, or lose it all!
               </p>
             </div>
-            <button class="btn">Play now</button>
+            <button onclick="startGame()" class="btn">Play now</button>
             <p class="text">© 2025 Hasbro.</p>
           </div>
         </div>
-        <div class="game">
+        <div class="game hidden">
           <div class="container-board">
+            <div class="for-jeckpot hidden">
+              <img src="assets/forjecpot.png" class="img-money" alt="" />
+              <img src="assets/pn.png" alt="" class="img-money" />
+              <img src="assets/pn2.png" alt="" class="img-money" />
+            </div>
+            <div class="choose-home hidden">
+              <div class="choose-conte">
+                <div data-price="280" data-current-cell="30" class="elm">
+                  <div class="bg-shade"></div>
+                  <p>
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 200 100"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g fill="white">
+                        <polygon
+                          points="50,160 65,40 100,100 135,40 150,160 130,160 120,80 100,120 80,80 70,160"
+                        />
+                        <rect x="30" y="90" width="140" height="10" />
+                        <rect x="30" y="120" width="140" height="10" />
+                      </g>
+                    </svg>
+                    200
+                  </p>
+                  <img
+                    src="assets/HGAM_MONOPOLY_25_PROD_TITLE_DEEDS33.png"
+                    class="rent-home"
+                    alt=""
+                  />
+                </div>
+                <div data-price="400" data-current-cell="40" class="elm">
+                  <div class="bg-shade"></div>
+                  <p>
+                    <svg
+                      width="35"
+                      height="35"
+                      viewBox="0 0 200 100"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g fill="white">
+                        <polygon
+                          points="50,160 65,40 100,100 135,40 150,160 130,160 120,80 100,120 80,80 70,160"
+                        />
+                        <rect x="30" y="90" width="140" height="10" />
+                        <rect x="30" y="120" width="140" height="10" />
+                      </g>
+                    </svg>
+                    400
+                  </p>
+                  <img
+                    src="assets/HGAM_MONOPOLY_25_PROD_TITLE_DEEDS43.png"
+                    class="rent-home"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
             <div class="game-logo">
               <img
                 src="assets/317421_2025_MON_Expansions1H25_LogoLockup_wht.png"
@@ -42,8 +103,20 @@
               />
             </div>
             <div class="container-game">
+              <div class="opacity-bg hidden">
+                <img src="assets/shade.png" alt="" />
+              </div>
               <div class="for-spin">
-                <img src="assets/EXPANSION F R E E P R K I N G.png" alt="" />
+                <img
+                  src="assets/EXPANSION F R E E P R K I N G.png"
+                  class="expension"
+                  alt=""
+                />
+                <img src="assets/Pointer copy.png" class="pointer" alt="" />
+                <img src="assets/Bonus Card copy 6.png" class="bonus" alt="" />
+                <img src="assets/500 copy.png" class="cash" alt="" />
+                <img src="assets/500 copy.png" class="cash" alt="" />
+                <img src="assets/100 copy.png" class="cash" alt="" />
               </div>
               <div class="for-balans">
                 BANK:
@@ -62,68 +135,154 @@
                       <rect x="30" y="120" width="140" height="10" />
                     </g>
                   </svg>
-                  <span class="money">1234</span>
+                  <span class="money"></span>
                 </div>
               </div>
               <div class="board">
+                <img src="assets/car.png" class="car" alt="" />
                 <img src="assets/board (2).png" class="img-board" alt="" />
                 <div class="top">
-                  <div class="cels theerd" data-current-cells="1">21</div>
-                  <div class="cels meedle" data-current-cells="2">22</div>
-                  <div class="cels meedle" data-current-cells="3">23</div>
-                  <div class="cels meedle" data-current-cells="4">24</div>
-                  <div class="cels meedle" data-current-cells="5">25</div>
-                  <div class="cels meedle" data-current-cells="6">26</div>
-                  <div class="cels meedle" data-current-cells="7">27</div>
-                  <div class="cels meedle" data-current-cells="8">28</div>
-                  <div class="cels meedle" data-current-cells="9">29</div>
-                  <div class="cels meedle" data-current-cells="10">30</div>
-                  <div class="cels fourth" data-current-cells="11">31</div>
+                  <div class="cels theerd" data-current-cells="21"></div>
+                  <div class="cels meedle" data-current-cells="22">22</div>
+                  <div class="cels meedle spin" data-current-cells="23">
+                    <img
+                      src="assets/Spin Chip.png"
+                      class="img-spin-top"
+                      alt=""
+                    />
+                  </div>
+                  <div class="cels meedle" data-current-cells="24"></div>
+                  <div class="cels meedle" data-current-cells="25"></div>
+                  <div class="cels meedle train" data-current-cells="26"></div>
+                  <div class="cels meedle" data-current-cells="27"></div>
+                  <div class="cels meedle" data-current-cells="28"></div>
+                  <div class="cels meedle" data-current-cells="29"></div>
+                  <div class="cels meedle" data-current-cells="30"></div>
+                  <div class="cels fourth" data-current-cells="31">31</div>
                 </div>
                 <div class="center">
                   <div class="left">
-                    <div class="cels center-cels" data-current-cells="2">20</div>
-                    <div class="cels center-cels" data-current-cells="3">19</div>
-                    <div class="cels center-cels" data-current-cells="4">18</div>
-                    <div class="cels center-cels" data-current-cells="5">17</div>
-                    <div class="cels center-cels" data-current-cells="6">16</div>
-                    <div class="cels center-cels" data-current-cells="7">15</div>
-                    <div class="cels center-cels" data-current-cells="8">14</div>
-                    <div class="cels center-cels" data-current-cells="9">13</div>
-                    <div class="cels center-cels" data-current-cells="10">12</div>
+                    <div class="cels center-cels" data-current-cells="20"></div>
+                    <div class="cels center-cels" data-current-cells="19"></div>
+                    <div class="cels center-cels spin" data-current-cells="18">
+                      <img
+                        src="assets/Spin Chip.png"
+                        class="img-spin-left"
+                        alt=""
+                      />
+                    </div>
+                    <div class="cels center-cels" data-current-cells="17"></div>
+                    <div
+                      class="cels center-cels train"
+                      data-current-cells="16"
+                    ></div>
+                    <div class="cels center-cels" data-current-cells="15"></div>
+                    <div class="cels center-cels" data-current-cells="14"></div>
+                    <div class="cels center-cels" data-current-cells="13"></div>
+                    <div class="cels center-cels" data-current-cells="12">
+                      12
+                    </div>
                   </div>
                   <div class="forvard"></div>
                   <div class="rigth">
-                    <div class="cels center-cels" data-current-cells="2">2</div>
-                    <div class="cels center-cels" data-current-cells="3">19</div>
-                    <div class="cels center-cels" data-current-cells="4">18</div>
-                    <div class="cels center-cels" data-current-cells="5">17</div>
-                    <div class="cels center-cels" data-current-cells="6">16</div>
-                    <div class="cels center-cels" data-current-cells="7">15</div>
-                    <div class="cels center-cels" data-current-cells="8">14</div>
-                    <div class="cels center-cels" data-current-cells="9">13</div>
-                    <div class="cels center-cels" data-current-cells="10">12</div>
+                    <div class="cels center-cels" data-current-cells="32"></div>
+                    <div class="cels center-cels" data-current-cells="33"></div>
+                    <div class="cels center-cels spin" data-current-cells="34">
+                      <img
+                        src="assets/Spin Chip.png"
+                        class="img-spin-rigth"
+                        alt=""
+                      />
+                    </div>
+                    <div class="cels center-cels" data-current-cells="35"></div>
+                    <div
+                      class="cels center-cels train"
+                      data-current-cells="36"
+                    ></div>
+                    <div class="cels center-cels spin" data-current-cells="37">
+                      <img
+                        src="assets/Spin Chip.png"
+                        class="img-spin-rigth"
+                        alt=""
+                      />
+                    </div>
+                    <div class="cels center-cels" data-current-cells="38"></div>
+                    <div class="cels center-cels" data-current-cells="39"></div>
+                    <div class="cels center-cels" data-current-cells="40">
+                      40
+                    </div>
                   </div>
                 </div>
                 <div class="bottom">
-                  <div class="cels first" data-current-cells="1">1</div>
-                  <div class="cels meedle" data-current-cells="2">2</div>
-                  <div class="cels meedle" data-current-cells="3">3</div>
-                  <div class="cels meedle" data-current-cells="4">4</div>
-                  <div class="cels meedle" data-current-cells="5">5</div>
-                  <div class="cels meedle" data-current-cells="6">6</div>
-                  <div class="cels meedle" data-current-cells="7">7</div>
-                  <div class="cels meedle" data-current-cells="8">8</div>
-                  <div class="cels meedle" data-current-cells="9">9</div>
-                  <div class="cels meedle" data-current-cells="10">10</div>
-                  <div class="cels second" data-current-cells="11">11</div>
+                  <div class="cels first" data-current-cells="1"></div>
+                  <div class="cels meedle" data-current-cells="2"></div>
+                  <div class="cels meedle spin" data-current-cells="3">
+                    <img src="assets/Spin Chip.png" alt="" class="img-spin" />
+                  </div>
+                  <div class="cels meedle" data-current-cells="4"></div>
+                  <div class="cels meedle" data-current-cells="5"></div>
+                  <div class="cels meedle train" data-current-cells="6"></div>
+                  <div class="cels meedle" data-current-cells="7"></div>
+                  <div class="cels meedle spin" data-current-cells="8">
+                    <img src="assets/Spin Chip.png" alt="" class="img-spin" />
+                  </div>
+                  <div class="cels meedle" data-current-cells="9"></div>
+                  <div class="cels meedle" data-current-cells="10"></div>
+                  <div class="cels second" data-current-cells="11"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="container-rolls">2</div>
+          <div class="container-rolls">
+            <div class="dice-conteiner">
+              <img src="assets/Layer 4.png" class="dice1" alt="" />
+              <img src="assets/Layer 5.png" class="dice2" alt="" />
+            </div>
+            <div class="btn2">
+              <button onclick="rolControls()" class="role-button">
+                Roll now
+              </button>
+            </div>
+            <div class="">YOU ROLLED AN <span class="count-len"></span></div>
+            <div class="spiner hidden">
+              <div class="spins-content">
+                <img src="assets/Wheel.png" class="wheel" alt="" />
+                <img src="assets/strelka.png" class="point-spin" alt="" />
+                <div class="circle"></div>
+              </div>
+
+              <button onclick="spinAnimation()" class="btn-spin">
+                Spin Now
+              </button>
+              <p id="text-for-spin"></p>
+            </div>
+          </div>
         </div>
-        <div class="end"></div>
+        <div class="end hidden">
+          <div class="logos-cont">
+            <img
+              class="logo"
+              src="assets/317421_2025_MON_Expansions1H25_LogoLockup_wht.png"
+              alt=""
+            />
+          </div>
+          <div class="btn-end">
+            <div>
+              <p class="text">Spin to Cash In</p>
+              <p class="text">
+                Race to victory in the Deal Mobile and win faster, with the new
+                Free Parking Jackpot expansion for classic Monopoly.
+              </p>
+            </div>
+            <div class="cont">
+              <button class="btn">Shop now</button>
+              <button onclick="resetGame()" class="reset">
+                <img src="assets/spin token.png" alt="" /> Play again
+              </button>
+            </div>
+            <p class="text">© 2025 Hasbro.</p>
+          </div>
+        </div>
       </div>
       <div class="swipe"></div>
     </div>
