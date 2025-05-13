@@ -1,7 +1,7 @@
 const car = document.querySelector(".car");
 const cells = document.querySelectorAll(".cels");
 const container = document.querySelector(".board");
-const money = document.querySelector(".money");
+const money = document.querySelectorAll(".money");
 const bg = document.querySelector(".screen");
 
 const forSpin = document.querySelector(".spin");
@@ -64,7 +64,9 @@ const positionRoll = {
 
 function updateBalance(amount) {
   forMoney += amount;
-  money.textContent = forMoney;
+  money.forEach((el) => {
+    el.textContent = forMoney;
+  });
 
   if (forMoney <= 0) {
     endGame();
@@ -163,11 +165,20 @@ async function moveCar(steps) {
   const fourthCell = cellsArray[currentCellIndex];
   if (finalCell.classList.contains("fourth")) {
     setTimeout(() => {
-      car.style.top = "90%";
-      car.style.left = "0";
+      const prisonCellIndex = cellsArray.findIndex(
+        (cell) => cell.getAttribute("data-current-cells") === "11"
+      );
+
+      if (prisonCellIndex !== -1) {
+        const newPos = getCellCenterPosition(cellsArray[prisonCellIndex]);
+        car.style.top = `${newPos.top}px`;
+        car.style.left = `${newPos.left}px`;
+
+        currentCellIndex = prisonCellIndex;
+      }
+
       updateBalance(-200);
-      money.textContent = forMoney;
-    });
+    }, 500);
   }
 }
 
@@ -188,7 +199,9 @@ function rolControls() {
   dice1.style.transform = `rotate(${random1.pos})`;
   dice2.style.transform = `rotate(${random2.pos})`;
   let step = random1.len + random2.len;
-  countLen.textContent = step;
+  setTimeout(() => {
+    countLen.textContent = step;
+  }, 1000);
 
   setTimeout(() => {
     moveCar(step);
@@ -347,7 +360,7 @@ function startGame() {
 }
 
 function resetGame() {
-  startGame()
+  startGame();
 }
 
 function endGame() {
