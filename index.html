@@ -10,6 +10,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <script src="js/app.js" defer></script>
   </head>
   <body>
@@ -139,7 +144,15 @@
                 </div>
               </div>
               <div class="board">
-                <img src="assets/car.png" class="car" alt="" />
+                <img src="assets/Spin Chip.png" class="img-spin-left" alt="" />
+                <div class="car-content">
+                  <span class="text-of-car">
+                    You are <br />
+                    here <br />
+                    <i class="bi bi-caret-down-fill"></i
+                  ></span>
+                  <img src="assets/car.png" class="car" alt="" />
+                </div>
                 <img src="assets/board (2).png" class="img-board" alt="" />
                 <div class="top">
                   <div
@@ -151,9 +164,7 @@
                     data-cells-price="220"
                     class="cels meedle"
                     data-current-cells="22"
-                  >
-                    22
-                  </div>
+                  ></div>
                   <div
                     data-cells-price=""
                     class="cels meedle spin"
@@ -222,13 +233,7 @@
                       data-cells-price=""
                       class="cels center-cels spin"
                       data-current-cells="18"
-                    >
-                      <img
-                        src="assets/Spin Chip.png"
-                        class="img-spin-left"
-                        alt=""
-                      />
-                    </div>
+                    ></div>
                     <div
                       data-cells-price="180"
                       class="cels center-cels"
@@ -258,9 +263,7 @@
                       data-cells-price="140"
                       class="cels center-cels"
                       data-current-cells="12"
-                    >
-                      12
-                    </div>
+                    ></div>
                   </div>
                   <div class="forvard"></div>
                   <div class="rigth">
@@ -408,7 +411,6 @@
                 <img src="assets/strelka.png" class="point-spin" alt="" />
                 <div class="circle"></div>
               </div>
-
               <button onclick="spinAnimation()" class="btn-spin">
                 Spin Now
               </button>
@@ -432,28 +434,29 @@
                 Free Parking Jackpot expansion for classic Monopoly.
               </p>
             </div>
-            <div>
+            <div class="ind">
               <p>Nice work money bags!</p>
               <div class="text-end">
-                BANK:
-                <div>
-                  <svg
-                    width="35"
-                    height="35"
-                    viewBox="0 0 200 100"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g fill="white">
-                      <polygon
-                        points="50,160 65,40 100,100 135,40 150,160 130,160 120,80 100,120 80,80 70,160"
-                      />
-                      <rect x="30" y="90" width="140" height="10" />
-                      <rect x="30" y="120" width="140" height="10" />
-                    </g>
-                  </svg>
+                <div class="fith">
+                  <p>BANK:</p>
+                  <div class="a">
+                    <svg
+                      width="42"
+                      height="42"
+                      viewBox="0 0 200 200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g fill="white">
+                        <polygon
+                          points="50,160 65,40 100,100 135,40 150,160 130,160 120,80 100,120 80,80 70,160"
+                        />
+                        <rect x="30" y="90" width="140" height="10" />
+                        <rect x="30" y="120" width="140" height="10" />
+                      </g>
+                    </svg>
+                  </div>
+                  <span class="money"></span>
                 </div>
-
-                <span class="money"></span>
               </div>
             </div>
             <div class="cont">

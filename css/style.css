@@ -83,8 +83,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding-bottom: 5px;
+  gap: 15px;
 }
 .text {
   text-align: center;
@@ -169,6 +169,7 @@ body {
   right: 10px;
   font-size: 20px;
   text-align: end;
+  color: #d0ff6e;
   line-height: 0.5;
 }
 .board {
@@ -176,6 +177,7 @@ body {
   height: 83%;
   border-radius: 3px;
   position: relative;
+  border: 3px solid black;
 }
 .top {
   width: 100%;
@@ -229,6 +231,8 @@ body {
 }
 .money {
   font-size: 30px;
+  color: white;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .container-rolls {
@@ -264,9 +268,17 @@ body {
   bottom: 0;
   right: 0;
   z-index: 6;
+  width: 100%;
+  height: 100%;
+}
+.car-content {
+  position: absolute;
+  left: 38px;
+  bottom: 1%;
   width: 12%;
   height: 8%;
-  transition: all 0.3s ease;
+  z-index: 6;
+  transition: all 0.1s ease;
 }
 .spin {
   position: relative;
@@ -279,12 +291,12 @@ body {
   z-index: 6;
 }
 .img-spin-left {
-  width: 56%;
-  height: 200%;
+  width: 8.5%;
+  height: 15.5%;
   transform: rotate(90deg);
   position: absolute;
-  top: -12.8px;
-  left: 5px;
+  top: 26.6%;
+  left: 6px;
   z-index: 6;
 }
 
@@ -391,20 +403,24 @@ body {
   }
 }
 .spiner {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 52%;
+  left: 21%;
+  width: 62%;
+  height: 50%;
+  z-index: 10;
   display: flex;
-  position: relative;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 25px;
 }
 .spins-content {
-  width: 40%;
+  width: 100%;
   height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
 }
 
@@ -414,7 +430,7 @@ body {
 }
 .btn-spin {
   border: 2px solid black;
-  width: 38%;
+  width: 70%;
   height: 35px;
   font-size: 17px;
   text-transform: uppercase;
@@ -431,16 +447,40 @@ body {
 
 .point-spin {
   width: 25%;
-  height: 100px;
+  height: 180px;
   position: absolute;
   top: 15%;
   transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+.text-of-car {
+  font-size: 9px;
+  padding: 2px;
+  line-height: 0.8;
+  position: absolute;
+  top: -25px;
+  border-radius: 3px;
+  text-align: center;
+  background: red;
+  height: 25px;
+  animation: filUp 0.9s ease-in-out infinite;
+}
+
+@keyframes filUp {
+  0% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(3px);
+  }
+}
 
 .circle {
-  width: 20px;
-  height: 20px;
-  background: white;
+  width: 30px;
+  height: 30px;
+  background: rgb(214, 208, 208);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -486,6 +526,16 @@ body {
   animation: fall 3s linear infinite, fall 5s linear infinite;
 }
 
+.money.animate-up {
+  transform: scale(1.2);
+  color: #4caf50;
+}
+
+.money.animate-down {
+  transform: scale(1.2);
+  color: #f44336;
+}
+
 @keyframes fall {
   0% {
     transform: translateY(-100px);
@@ -503,7 +553,7 @@ body {
   align-items: center;
   position: absolute;
   top: 0;
-  z-index: 7;
+  z-index: 9999;
 }
 .choose-conte {
   width: 90%;
@@ -554,6 +604,7 @@ body {
   padding-top: 50px;
   flex-direction: column;
   padding-bottom: 35px;
+  font-family: "Neue Kabel W01 Bold";
 }
 
 .reset {
@@ -579,11 +630,11 @@ body {
 }
 .reset > img {
   width: 15%;
-  height: 50%;
+  height: 55%;
 }
-.cont{
+.cont {
   width: 100%;
-  height: 50%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -591,4 +642,34 @@ body {
 }
 .hidden {
   display: none;
+}
+.text-end{
+  color: #d0ff6e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.ind{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: .9;
+}
+.fith > p{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+.fith{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text:nth-child(2){
+  font-family: sans-serif;
+  font-weight: 500;
 }
