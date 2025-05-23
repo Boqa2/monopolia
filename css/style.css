@@ -666,7 +666,9 @@ body {
   z-index: 100;
   left: 5%;
 }
-
+.bg-oh-no{
+ background: url("../assets/Layer6.png");
+}
 .hidden {
   display: none;
 }

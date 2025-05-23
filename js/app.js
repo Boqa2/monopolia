@@ -264,8 +264,7 @@ function spinAnimation() {
     parentSpiner.classList.add("hidden");
     strelka.style.transform = `rotate(0deg)`;
     hiddenSpin();
-    bg.style.background =
-      "url(../assets/GenerativeFill2.png) top/cover no-repeat";
+    bg.classList.remove("bg-oh-no");
   }, 10000);
 }
 
@@ -280,7 +279,7 @@ function jackpot() {
 
 function minusBalans(num) {
   animateMoneyStepChange(forMoney - num);
-  bg.style.background = "url(../assets/Layer6.png) top/cover no-repeat";
+  bg.classList.add("bg-oh-no");
   buttonForSpin.classList.add("hidden");
   textForSpin.textContent = "UH-ON!";
 }
