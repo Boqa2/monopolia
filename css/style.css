@@ -18,7 +18,7 @@ body {
   background: white;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  position: relative;
+  position: fixed;
   color: #fff;
   width: 400px;
   height: 750px;
@@ -32,7 +32,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: background 0.3s ease-out;
-  background: url("../assets/GenerativeFill2.png") top/cover no-repeat;
+  background: url("../assets/GenerativeFill2.png");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -73,6 +73,10 @@ body {
   display: flex;
   justify-content: center;
 }
+.text-hasbro {
+  display: none;
+}
+
 .logo {
   width: 35%;
   height: 50%;
@@ -99,6 +103,7 @@ body {
 }
 .text:nth-child(3) {
   font-size: 8px;
+  display: block;
 }
 .btn {
   border: 2px solid black;
@@ -640,10 +645,32 @@ body {
   align-items: center;
   gap: 10px;
 }
+.video{
+  width: 100%;
+  height: 100%;
+}
+.container-video{
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vol{
+  width: 16%;
+  height: 8%;
+  font-size: 60px;
+  position: absolute;
+  top: 5%;
+  z-index: 100;
+  left: 5%;
+}
+
 .hidden {
   display: none;
 }
-.text-end{
+.text-end {
   color: #d0ff6e;
   display: flex;
   justify-content: center;
@@ -651,25 +678,36 @@ body {
   text-align: center;
   flex-direction: column;
 }
-.ind{
+.ind {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: .9;
+  line-height: 0.9;
 }
-.fith > p{
+.fith > p {
   width: 100%;
   font-size: 30px;
   text-align: center;
 }
-.fith{
+.fith {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.text:nth-child(2){
+.text:nth-child(2) {
   font-family: sans-serif;
   font-weight: 500;
 }
+.text1 {
+  text-align: center;
+  line-height: 1;
+  margin-top: 10px;
+}
+.texts {
+  display: none;
+}
+
+
+

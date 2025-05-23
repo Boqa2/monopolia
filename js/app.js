@@ -1,5 +1,3 @@
-// Refactored and cleaned up game logic
-
 const car = document.querySelector(".car-content");
 const cells = document.querySelectorAll(".cels");
 const container = document.querySelector(".board");
@@ -25,6 +23,9 @@ const start = document.querySelector(".start");
 const game = document.querySelector(".game");
 const end = document.querySelector(".end");
 
+const video = document.querySelector(".video");
+const volume = document.querySelector(".vol");
+
 let parentSpiner = document.querySelector(".spiner");
 let shade = document.querySelector(".opacity-bg");
 let forMoney = 0;
@@ -32,6 +33,8 @@ let parents = countLen.parentElement;
 let parentDice = dice1.parentElement;
 let parentBtn = rolesButton.parentElement;
 let currentCellIndex = 9;
+let parentVideo = video.parentElement;
+let volsEver = video.muted;
 
 const positionRoll = {
   dise1: [
@@ -75,8 +78,8 @@ function updateBalance(amount) {
   if (forMoney <= 0) endGame();
 }
 
-const cellsArray = Array.from(cells).sort((a, b) =>
-  Number(a.dataset.currentCells) - Number(b.dataset.currentCells)
+const cellsArray = Array.from(cells).sort(
+  (a, b) => Number(a.dataset.currentCells) - Number(b.dataset.currentCells)
 );
 
 cellsArray.forEach((cell) => {
@@ -91,8 +94,16 @@ function getCellCenterPosition(cell) {
   const cellRect = cell.getBoundingClientRect();
 
   return {
-    left: cellRect.left - containerRect.left + cellRect.width / 2 - car.offsetWidth / 2,
-    top: cellRect.top - containerRect.top + cellRect.height / 2 - car.offsetHeight / 2,
+    left:
+      cellRect.left -
+      containerRect.left +
+      cellRect.width / 2 -
+      car.offsetWidth / 2,
+    top:
+      cellRect.top -
+      containerRect.top +
+      cellRect.height / 2 -
+      car.offsetHeight / 2,
   };
 }
 
@@ -120,14 +131,19 @@ async function moveCar(steps) {
       car.style.left = `${nextPos.left}px`;
       car.style.top = `${nextPos.top}px`;
     } else {
-      if (["left", "right"].includes(currentDirection)) car.style.left = `${nextPos.left}px`;
-      else if (["up", "down"].includes(currentDirection)) car.style.top = `${nextPos.top}px`;
+      if (["left", "right"].includes(currentDirection))
+        car.style.left = `${nextPos.left}px`;
+      else if (["up", "down"].includes(currentDirection))
+        car.style.top = `${nextPos.top}px`;
     }
 
     currentCellIndex = nextCellIndex;
-    currentCell.dispatchEvent(new CustomEvent("carArrival", { detail: { cell: currentCell } }));
+    currentCell.dispatchEvent(
+      new CustomEvent("carArrival", { detail: { cell: currentCell } })
+    );
 
-    if (cellsArray[currentCellIndex].classList.contains("first")) updateBalance(200);
+    if (cellsArray[currentCellIndex].classList.contains("first"))
+      updateBalance(200);
 
     await new Promise((resolve) => setTimeout(resolve, 400));
   }
@@ -136,7 +152,9 @@ async function moveCar(steps) {
   if (finalCell.classList.contains("spin")) showSpin();
   if (finalCell.classList.contains("fourth")) {
     setTimeout(() => {
-      const prisonCellIndex = cellsArray.findIndex((cell) => cell.dataset.currentCells === "11");
+      const prisonCellIndex = cellsArray.findIndex(
+        (cell) => cell.dataset.currentCells === "11"
+      );
       if (prisonCellIndex !== -1) {
         const newPos = getCellCenterPosition(cellsArray[prisonCellIndex]);
         car.style.top = `${newPos.top}px`;
@@ -157,7 +175,10 @@ function rolControls() {
     parents.classList.remove("hidden");
   }, 1200);
 
-  const combos = [ [6, 2], [5, 3] ];
+  const combos = [
+    [6, 2],
+    [5, 3],
+  ];
   const [val1, val2] = combos[Math.floor(Math.random() * combos.length)];
   const d1 = positionRoll.dise1.find((item) => item.len === val1);
   const d2 = positionRoll.dise2.find((item) => item.len === val2);
@@ -197,7 +218,9 @@ function showSpin() {
 }
 
 function hiddenSpin() {
-  [parentBtn, parents, parentDice].forEach((el) => el.classList.remove("hidden"));
+  [parentBtn, parents, parentDice].forEach((el) =>
+    el.classList.remove("hidden")
+  );
   parentSpiner.classList.add("hidden");
   shade.classList.add("hidden");
 }
@@ -214,22 +237,26 @@ function spinAnimation() {
     strelka.style.transform = `rotate(${totalRotation}deg)`;
   }, 50);
 
-  strelka.addEventListener("transitionend", () => {
-    const { type, value } = selected.action;
-    if (type === "number") {
-      minusBalans(value);
-      hiddenSpin();
-      textForSpin.classList.add("hidden");
-      endGame(3000);
-    } else if (type === "texts") {
-      jackpot();
-      hiddenSpin();
-      endGame(6000);
-    } else if (type === "path") {
-      openPopup();
-      hiddenSpin();
-    }
-  }, { once: true });
+  strelka.addEventListener(
+    "transitionend",
+    () => {
+      const { type, value } = selected.action;
+      if (type === "number") {
+        minusBalans(value);
+        hiddenSpin();
+        textForSpin.classList.add("hidden");
+        endGame(3000);
+      } else if (type === "texts") {
+        jackpot();
+        hiddenSpin();
+        endGame(6000);
+      } else if (type === "path") {
+        openPopup();
+        hiddenSpin();
+      }
+    },
+    { once: true }
+  );
 
   textForSpin.classList.remove("hidden");
   buttonForSpin.classList.add("hidden");
@@ -237,14 +264,17 @@ function spinAnimation() {
     parentSpiner.classList.add("hidden");
     strelka.style.transform = `rotate(0deg)`;
     hiddenSpin();
-    bg.style.background = "url(../assets/GenerativeFill2.png) top/cover no-repeat";
+    bg.style.background =
+      "url(../assets/GenerativeFill2.png) top/cover no-repeat";
   }, 10000);
 }
 
 function jackpot() {
   animateMoneyStepChange(forMoney + 1000);
   forJeckpot.classList.remove("hidden");
-  Array.from(forJeckpot.children).forEach((el) => el.classList.add("animation-up"));
+  Array.from(forJeckpot.children).forEach((el) =>
+    el.classList.add("animation-up")
+  );
   setTimeout(() => forJeckpot.classList.add("hidden"), 3500);
 }
 
@@ -318,3 +348,51 @@ function chooseEnd() {
 }
 
 updateBalance(1500);
+video.addEventListener("DOMContentLoaded", () => {
+  video.play;
+});
+video.play();
+video.addEventListener("ended", () => {
+  parentVideo.classList.add("hidden");
+  start.classList.remove("hidden");
+});
+
+function changeVol() {
+  volsEver = !volsEver;
+  if (volsEver) {
+    volume.innerHTML = `<i class="bi bi-volume-mute-fill"></i>`;
+    video.muted = true;
+  } else {
+    video.muted = false;
+    volume.innerHTML = `<i class="bi bi-volume-up-fill"></i>`;
+  }
+}
+let currentDirection = null;
+
+function changeDirect() {
+  const heightCont = window.innerHeight;
+  const isVertical = heightCont >= 400;
+  const newDirection = isVertical ? "vertical" : "horizontal";
+
+  if (newDirection === currentDirection) return; // ничего не делать, если ориентация не изменилась
+  currentDirection = newDirection;
+
+  if (isVertical) {
+    console.log("vertical");
+    video.src = `assets/HSFG5112000 (1).mp4`;
+    video.play();
+  } else {
+    console.log("horizontal");
+    video.src = `assets/HSFG5104000H (1).mp4`;
+    video.play();
+  }
+}
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(changeDirect, 200); // вызываем функцию через 200 мс после завершения resize
+});
+
+// первый вызов при загрузке страницы
+changeDirect();

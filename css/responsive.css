@@ -1,13 +1,193 @@
-/* @media (max-height: 400px) {
-  body {
-    padding: 10px 0;
-  }
+@media (max-height: 400px) {
   .phone {
     width: 800px;
     height: 380px;
     position: relative;
+    border-radius: 0px;
+    border: 0;
   }
-} */
+  .screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .start {
+    width: 100%;
+    height: 100%;
+    background: url("../assets/Generative\ Fill\ 5.png") top/cover no-repeat;
+    padding: 30px;
+  }
+  .notch {
+    display: none;
+  }
+  .logos-cont {
+    width: 100%;
+    justify-content: start;
+    order: 1;
+    justify-content: space-between;
+  }
+  .text-hasbro {
+    display: flex;
+    height: 100%;
+    font-size: 9px;
+    align-items: end;
+  }
+  .btn {
+    height: 45px;
+  }
+  .btn-cont {
+    align-items: flex-start;
+    width: 50%;
+    height: 70%;
+  }
+  .logo {
+    width: 15%;
+    height: 100%;
+  }
+  .text {
+    width: 60%;
+    text-align: start;
+  }
+  .text:nth-child(3) {
+    display: none;
+  }
+  .game {
+    flex-direction: row;
+  }
+  .container-board {
+    height: 100%;
+    padding: 0;
+  }
+  .container-rolls {
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+  }
+  .dice-conteiner {
+    height: 25%;
+  }
+  .btn2 {
+    height: 10%;
+  }
+  .game-logo {
+    justify-content: flex-end;
+    height: 10%;
+  }
+  .container-game {
+    height: 86%;
+    left: 130px;
+    top: -10px;
+    width: 78%;
+  }
+  .for-balans {
+    width: 100%;
+    top: 70%;
+    right: 82%;
+    font-size: 30px;
+    line-height: 1;
+  }
+  .money {
+    font-size: 50px;
+    font-weight: 900x;
+  }
+  .for-spin {
+    left: 15px;
+  }
+  .game-logo > img {
+    height: 130%;
+  }
+  .car-content {
+    left: 35px;
+  }
+  .swipe {
+    display: none;
+  }
+  .img-spin-left {
+    height: 18.3%;
+    top: 25.4%;
+    width: 7.7%;
+  }
+  .spiner {
+    width: 30%;
+    left: 65%;
+    height: 78%;
+    top: 10%;
+  }
+  .btn-spin {
+    width: 60%;
+    height: 70px;
+  }
+  .point-spin {
+    height: 90%;
+    top: -0.2%;
+  }
+  .spins-content {
+    height: 100%;
+  }
+  .opacity-bg > img {
+    width: 96.3%;
+    height: 102%;
+  }
+  .opacity-bg {
+    left: 15px;
+  }
+  .img-spin-rigth {
+    top: -11.4px;
+    left: 12px;
+    width: 49%;
+    height: 210%;
+  }
+  .img-spin-top {
+    top: -6px;
+  }
+  .pointer {
+    top: 10px;
+
+  }
+  .end {
+    background: url("../assets/Generative\ Fill\ 5.png") top / cover no-repeat;
+    padding: 40px;
+  }
+  .btn-end {
+    width: 50%;
+  }
+  .reset {
+    height: 45px;
+  }
+  .ind {
+    align-items: flex-start;
+    line-height: 1.2;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .cont {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .choose-home{
+    align-items: end;
+  }
+  .choose-conte{
+    width: 55%;
+    height: 65%;
+  }
+  .text1 {
+    display: none;
+  }
+  .text {
+    width: 100%;
+  }
+  .texts {
+    font-size: 12px;
+    display: flex;
+    justify-items: flex-end;
+    align-items: flex-end;
+  }
+  .logos-cont:nth-child(1) > .logo {
+    width: 30%;
+    height: 140%;
+  }
+}
 
 @media (max-width: 400px) {
   .phone {
@@ -16,16 +196,16 @@
     border-radius: 0px;
     border: 0;
   }
-  .screen{
+  .screen {
     border-radius: 0;
   }
-  .start{
+  .start {
     padding-top: 20px;
   }
-  .notch{
+  .notch {
     display: none;
   }
-  .text:nth-child(3){
+  .text:nth-child(3) {
     font-size: 10px;
     margin-top: 38px;
   }
